@@ -1,0 +1,16 @@
+hrs = raw_input("Enter Hours:")
+rate = raw_input("Enter Rate:")
+payh= raw_input("Enter Pay per Hr")
+h=float(hrs)
+r=float(rate)
+p= float(payh)
+if h <= 40.0:
+   pay = h * p
+else:
+    dif=h-40.0
+    d=float(dif)
+    pay = (40.0 * p) + (d * r * p) 
+print pay
+
+
+	

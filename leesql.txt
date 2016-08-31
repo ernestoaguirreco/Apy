@@ -1,0 +1,23 @@
+
+        Dim ivar As Integer
+        Dim SqlConnectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ernesto.aguirre\Documents\BASECG.mdf;Integrated Security=True;Connect Timeout=30"
+        Dim queryString As String = "SELECT * from dbo.T1"
+        Using connection As New SqlConnection(SqlConnectionString)
+            Dim command As New SqlCommand(queryString, connection)
+            Try
+                connection.Open()
+                Dim dataReader As SqlDataReader = command.ExecuteReader()
+                Do While dataReader.Read()
+                    '  textbox25.text = CInt(dataReader(0),integer i)
+                    ivar = CInt(dataReader(0)) + 1
+                    TextBox1.Text = CType(dataReader(0), String)
+                Loop
+                TextBox2.Text = CType(ivar, String)
+                dataReader.Close()
+                ' Aqui se prueba la impresión
+
+
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
